@@ -1,0 +1,18 @@
+<div class="contents sent">
+  <h3>編集する</h3>
+  <%= form_for @tweet do |f| %>
+    <div>
+      <%= f.label :画像 %>
+      <%= f.text_field :image %>
+    </div>
+    <div>
+      <%= f.label :日記 %>
+      <%= f.text_area :text, style: 'width: 30%;height: 100px;' %>
+    </div>
+    <div>
+      <%= button_tag type: "submit", class: "btn btn--block" do %>
+      更新
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="title">
+        <a href="/">
+          <% if user_signed_in? %>
+            <%= current_user.nickname %>
+          <% end %>
+          blog
+        </a>
+      </div>
+        <ul class="lists">
+          <% if user_signed_in? %>
+            <il class="list"><a class="list_name" href="/users/<%= current_user.id %>" >マイページ</a></il>
+            <il class="list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete , class: "list_name" %></il>
+            <il class="list"><%= link_to "投稿", new_tweet_path , class: "list_name" %></il>
+          <% else %>
+            <il class="list"><%= link_to "新規登録", new_user_registration_path, class: "list_name" %></il>
+            <il class="list"><%= link_to "ログイン", new_user_session_path , class: "list_name" %></il> 
+          <% end %>
+        </ul>
+    </header>
+
+    <%= yield %>
+    
+    <footer>
+    </footer>
+  </body>
+</html>
